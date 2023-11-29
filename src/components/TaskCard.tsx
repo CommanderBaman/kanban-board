@@ -1,4 +1,9 @@
-import { ICON_ID_TO_COLOR, STATUS_TO_ICON_ID } from '../utils/constants';
+import {
+  AVAILABLE_USER_COLOR,
+  ICON_ID_TO_COLOR,
+  STATUS_TO_ICON_ID,
+  UNAVAILABLE_USER_COLOR,
+} from '../utils/constants';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
@@ -61,7 +66,9 @@ function TaskCard(props: TaskCardProps) {
             <div
               className={styles.userAvailable}
               style={{
-                backgroundColor: !!props?.userAvailable ? '#ece351' : 'grey',
+                backgroundColor: !!props?.userAvailable
+                  ? AVAILABLE_USER_COLOR
+                  : UNAVAILABLE_USER_COLOR,
               }}
             ></div>
           </div>

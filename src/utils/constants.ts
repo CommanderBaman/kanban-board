@@ -116,12 +116,13 @@ export const LOCALSTORAGE_KEY_GROUPING = 'grouping-option';
 export const LOCALSTORAGE_KEY_SORTING = 'sorting-option';
 
 export const TAG_COLORS = Object.freeze([
-  '#ffdbc3',
-  '#e3a0a0',
-  '#869f5b',
-  '#487490',
-  '#662267',
+  '#EC8F5E',
+  '#F3B664',
+  '#F1EB90',
+  '#9FBB73',
 ]);
+export const AVAILABLE_USER_COLOR = '#F1EB90'
+export const UNAVAILABLE_USER_COLOR = '#6A6F75'
 
 export const ICON_IDS = Object.freeze({
   SLIDER: 'fa-solid fa-sliders',

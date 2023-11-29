@@ -1,11 +1,13 @@
-import { GroupingOption, Ticket, User } from '../utils/types';
 import {
+  AVAILABLE_USER_COLOR,
   ICON_IDS,
   ICON_ID_TO_COLOR,
   PRIORITY_NUM_TO_ICON_ID,
   PRIORITY_OPTIONS,
   STATUS_TO_ICON_ID,
+  UNAVAILABLE_USER_COLOR,
 } from '../utils/constants';
+import { GroupingOption, Ticket, User } from '../utils/types';
 
 import DummyAccountImage from '../assets/account.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -44,8 +46,8 @@ function CardColumn(props: CardColumnProps) {
                     (user) => user.name === props.columnTitle
                   )
                 ]?.available 
-                  ? '#ece351'
-                  : 'grey',
+                  ? AVAILABLE_USER_COLOR
+                  : UNAVAILABLE_USER_COLOR,
               }}
             ></div>
           </div>
