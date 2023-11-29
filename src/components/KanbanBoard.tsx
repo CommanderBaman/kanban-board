@@ -6,6 +6,7 @@ import {
   PRIORITY_NUM_TO_WORD,
   PRIORITY_OPTIONS,
   STATUS_OPTIONS,
+  TAG_COLORS,
 } from '../utils/constants';
 import React, { useEffect, useState } from 'react';
 
@@ -60,7 +61,21 @@ function KanbanBoard(props: KanbanBoardProps) {
     sortingOption: SortingOption
   ): CardColumnProps[] => {
     let result: CardColumnProps[];
+    // get all tags and assign colors
+    let tags: string[] = [];
+    tickets.forEach((ticket) => {
+      ticket.tag.forEach((t) => tags.push(t.toLowerCase()));
+    });
+    tags = tags.filter((item, i, ar) => ar.indexOf(item) === i);
+    const tagColorDictionary = {} as any;
+    tags.forEach((tag, index) => {
+      tagColorDictionary[tag] = TAG_COLORS[index % tags.length];
+    });
+
+    // decide on sorting function
     const sortingFunction = makeSortFunction(sortingOption);
+
+    // group according to option
     switch (groupingOption) {
       case 'Priority':
         result = PRIORITY_OPTIONS.map((priority) => {
@@ -71,6 +86,7 @@ function KanbanBoard(props: KanbanBoardProps) {
                 (card) => PRIORITY_NUM_TO_WORD[card.priority] === priority
               )
               .sort(sortingFunction),
+            tagColorDictionary,
           };
         });
         break;
@@ -81,6 +97,7 @@ function KanbanBoard(props: KanbanBoardProps) {
             cards: tickets
               .filter((card) => card.status === status)
               .sort(sortingFunction),
+            tagColorDictionary,
           };
         });
         break;
@@ -92,6 +109,7 @@ function KanbanBoard(props: KanbanBoardProps) {
               .filter((card) => card.userId === user.id)
               .sort(sortingFunction),
             isUserBased: true,
+            tagColorDictionary,
           };
         });
         break;
@@ -163,6 +181,7 @@ function KanbanBoard(props: KanbanBoardProps) {
               columnTitle={cardColumn.columnTitle}
               cards={cardColumn.cards}
               isUserBased={cardColumn?.isUserBased}
+              tagColorDictionary={cardColumn.tagColorDictionary}
             />
           </div>
         ))}

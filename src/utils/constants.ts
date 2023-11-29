@@ -7,7 +7,7 @@ export const DEMO_API_DATA: WebData = Object.freeze({
     {
       id: 'CAM-1',
       title: 'Update User Profile Page UI',
-      tag: ['Feature request'],
+      tag: ['Completion'],
       userId: 'usr-1',
       status: 'Todo',
       priority: 4,
@@ -24,7 +24,7 @@ export const DEMO_API_DATA: WebData = Object.freeze({
     {
       id: 'CAM-3',
       title: 'Optimize Database Queries for Performance',
-      tag: ['Feature Request'],
+      tag: ['Modding'],
       userId: 'usr-2',
       status: 'In progress',
       priority: 1,
@@ -115,3 +115,6 @@ export const STATUS_OPTIONS = Object.freeze([
 
 export const LOCALSTORAGE_KEY_GROUPING = 'grouping-option'
 export const LOCALSTORAGE_KEY_SORTING = 'sorting-option'
+
+
+export const TAG_COLORS = ['#ffdbc3', '#e3a0a0', '#869f5b', '#487490', '#662267']

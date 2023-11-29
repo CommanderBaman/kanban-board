@@ -7,6 +7,7 @@ export type CardColumnProps = {
   columnTitle: string;
   cards: Ticket[];
   isUserBased?: boolean;
+  tagColorDictionary: any;
 };
 
 function CardColumn(props: CardColumnProps) {
@@ -16,7 +17,13 @@ function CardColumn(props: CardColumnProps) {
       <ul className={styles.columnCardsContainer}>
         {props.cards.map((card, index) => (
           <div key={index}>
-            {JSON.stringify(card)} <br />
+            <TaskCard
+              title={card.title}
+              id={card.id}
+              tags={card.tag}
+              tagColors={card.tag.map((t) => props.tagColorDictionary[t.toLowerCase()])}
+              status={card.status}
+            />
           </div>
         ))}
       </ul>
