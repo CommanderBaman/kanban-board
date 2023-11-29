@@ -1,5 +1,6 @@
 import { GroupingOption, Ticket, User } from '../utils/types';
 import {
+  ICON_IDS,
   ICON_ID_TO_COLOR,
   PRIORITY_NUM_TO_ICON_ID,
   PRIORITY_OPTIONS,
@@ -28,7 +29,27 @@ function CardColumn(props: CardColumnProps) {
   return (
     <div className={styles.cardColumn}>
       <div className={styles.columnHeading}>
-        {isUserBased && <img src={DummyAccountImage} alt='User' />}
+        {isUserBased && (
+          <div className={styles.headingImageContainer}>
+            <img
+              className={styles.headingImage}
+              src={DummyAccountImage}
+              alt='User'
+            />
+            <div
+              className={styles.userAvailable}
+              style={{
+                backgroundColor: !!props.users[
+                  props.users.findIndex(
+                    (user) => user.name === props.columnTitle
+                  )
+                ]?.available 
+                  ? '#ece351'
+                  : 'grey',
+              }}
+            ></div>
+          </div>
+        )}
         {isStatusBased && (
           <FontAwesomeIcon
             // eslint-disable-next-line
@@ -61,11 +82,21 @@ function CardColumn(props: CardColumnProps) {
             }}
           />
         )}
-        <p>{props.columnTitle}</p> <p>{props.cards.length}</p>
+        <p className={styles.columnTitle}>{props.columnTitle}</p>{' '}
+        <p className={styles.fadedText}>{props.cards.length}</p>
+        <div className={styles.spaceMaker}></div>
+        <FontAwesomeIcon
+          className={styles.headingIcon}
+          icon={ICON_IDS.PLUS as IconProp}
+        />
+        <FontAwesomeIcon
+          className={styles.headingIcon}
+          icon={ICON_IDS.ELLIPSIS as IconProp}
+        />
       </div>
       <ul className={styles.columnCardsContainer}>
         {props.cards.map((card, index) => (
-          <div key={index}>
+          <li className={styles.columnCardContainer} key={index}>
             <TaskCard
               title={card.title}
               id={card.id}
@@ -83,7 +114,7 @@ function CardColumn(props: CardColumnProps) {
                 ].available
               }
             />
-          </div>
+          </li>
         ))}
       </ul>
     </div>

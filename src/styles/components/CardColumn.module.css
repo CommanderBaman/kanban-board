@@ -1,0 +1,54 @@
+.cardColumn {
+  width: 95%;
+  margin: auto;
+}
+
+.columnCardContainer {
+  margin-bottom: 1em;
+}
+
+.columnHeading {
+  padding: 1em 0;
+  display: flex;
+
+  align-items: center;
+}
+
+.columnTitle {
+  padding: 0 0.5em 0 1em;
+}
+
+.headingIcon {
+  padding-right: 0.5em;
+  color: var(--clr-on-surface-secondary);
+}
+
+.headingImageContainer {
+  position: relative;
+}
+
+.headingImage {
+  height: 1.5em;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+}
+
+.fadedText {
+  color: var(--clr-on-surface-secondary);
+}
+
+.spaceMaker {
+  flex: 1;
+}
+
+.userAvailable {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+
+  width: 40%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  
+  border: var(--border-size-0) solid grey;
+}
