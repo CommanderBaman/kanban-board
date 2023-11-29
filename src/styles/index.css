@@ -1,0 +1,171 @@
+/* Removing outlines */
+::-moz-focus-inner {
+  border: 0;
+}
+
+:focus {
+  outline: none;
+}
+
+/* color variables */
+:root {
+  /* source: https://material.io/design/color/dark-theme.html#ui-application */
+  --clr-primary: #bb86fc; /* #6200ee; */
+  --clr-primary-variant: #3700be;
+  --clr-secondary: #03dac6;
+  --clr-secondary-variant: #03dac6;
+  --clr-bg: #121212;
+  --clr-surface: #2b2b2b;
+  --clr-error: #cf6679;
+
+  --clr-on-primary: #000000;
+  --clr-on-secondary: #000000;
+  --clr-on-bg: #ffffff;
+  --clr-on-surface: #ffffff;
+  --clr-on-error: #000000;
+  /* main colors */
+
+  /* custom colors */
+  --white: #fff;
+  --facebook-blue: #4267b2;
+  --linkedin-blue: #2867b2;
+  --insta-pink: #8a3ab9;
+  --navbar-bg: #1a0f52cc;
+  --navbar-lines: #fffb;
+  --navbar-animation-block: #0ff;
+  --navbar-block: #0ff;
+  --navbar-link-hover: #0ff;
+  --form-submit-bg: #0ff;
+  --gmail-red: #bb001b;
+  --youtube-red: #f00;
+
+  /* fonts */
+  --head-font: 'Poppins', -apple-system, blinkmacsystemfont, segoe ui, arial,
+    noto sans, sans-serif; /* Gill Sans */
+  --para-font-primary: 'Open Sans', -apple-system, blinkmacsystemfont, segoe ui,
+    arial, noto sans, sans-serif; /* Abel */
+  --para-font-secondary: 'Nunito Sans', -apple-system, blinkmacsystemfont,
+    segoe ui, arial, noto sans, sans-serif; /* Helvetica */
+
+  /*
+    fonts considered
+    head = Abel, Gill Sans
+    body = Nunito Sans, Helvetica, Inter
+  */
+
+  /* for conversions */
+  --px-to-vh: 0.09259259259259259vh;
+  --px-to-vw: 0.052083333333333336vw;
+  --px-to-rem: 0.0625rem;
+
+  /* common font sizes */
+  --font-size-12: max(8px, calc(12 * var(--px-to-vw)));
+  --font-size-16: max(12px, calc(18 * var(--px-to-vw)));
+  --font-size-20: max(16px, calc(24 * var(--px-to-vw)));
+  --font-size-24: max(20px, calc(29 * var(--px-to-vw)));
+  --font-size-28: max(24px, calc(32 * var(--px-to-vw)));
+  --font-size-32: max(28px, calc(40 * var(--px-to-vw)));
+  --font-size-36: max(32px, calc(48 * var(--px-to-vw)));
+  --font-size-40: max(36px, calc(54 * var(--px-to-vw)));
+  --font-size-44: max(40px, calc(60 * var(--px-to-vw)));
+  --font-size-48: max(44px, calc(64 * var(--px-to-vw)));
+  --font-size-64: max(60px, calc(80 * var(--px-to-vw)));
+  --font-size-80: max(76px, calc(96 * var(--px-to-vw)));
+  --font-size-96: max(92px, calc(128 * var(--px-to-vw)));
+
+  /* heading and icon sizes */
+  --icon-size: var(--font-size-32);
+  --large-icon-size: var(--font-size-48);
+  --small-icon-size: var(--font-size-28);
+  --h1-size: var(--font-size-44);
+  --h2-size: var(--font-size-36);
+  --h3-size: var(--font-size-32);
+  --small-heads: var(--font-size-28);
+
+  /* other common sizes */
+  --border-radius-8: 0.5rem;
+  --border-radius-16: 1rem;
+  --border-radius-32: 2rem;
+  --border-size-0: 0.1px;
+  --border-size-1: 0.15rem;
+  --border-size-2: 0.3rem;
+  --border-size-4: 0.5rem;
+
+  /* transition times */
+  --short-transition-time: 0.2s;
+  --long-transition-time: 0.7s;
+}
+
+/* Global Settings */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--clr-bg);
+  color: var(--clr-on-bg);
+  font-family: var(--para-font-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* adding font styles + length */
+:is(h1, h2) {
+  font-family: var(--head-font);
+  color: var(--clr-primary);
+}
+
+body,
+button {
+  font-size: var(--font-size-16);
+}
+
+h1 {
+  font-size: var(--h1-size);
+  font-weight: bold;
+}
+
+h2 {
+  font-size: var(--h2-size);
+  font-weight: bolder;
+}
+
+h3 {
+  font-size: var(--h3-size);
+  font-weight: 600;
+}
+
+:is(h4, h5, h6) {
+  font-size: var(--small-heads);
+}
+
+img {
+  border-radius: var(--border-radius-8);
+}
+
+@media only screen and (min-width: 48em) {
+  :root {
+    /* common font sizes */
+    --font-size-12: max(12px, calc(18 * var(--px-to-vw)));
+    --font-size-16: max(16px, calc(24 * var(--px-to-vw)));
+    --font-size-20: max(20px, calc(29 * var(--px-to-vw)));
+    --font-size-24: max(24px, calc(32 * var(--px-to-vw)));
+    --font-size-28: max(28px, calc(40 * var(--px-to-vw)));
+    --font-size-32: max(32px, calc(48 * var(--px-to-vw)));
+    --font-size-36: max(36px, calc(54 * var(--px-to-vw)));
+    --font-size-40: max(40px, calc(60 * var(--px-to-vw)));
+    --font-size-44: max(44px, calc(68 * var(--px-to-vw)));
+    --font-size-48: max(48px, calc(75 * var(--px-to-vw)));
+    --font-size-64: max(64px, calc(98 * var(--px-to-vw)));
+    --font-size-80: max(80px, calc(120 * var(--px-to-vw)));
+    --font-size-96: max(96px, calc(144 * var(--px-to-vw)));
+
+    /* heading and icon sizes */
+    --icon-size: var(--font-size-32);
+    --h1-size: var(--font-size-80);
+    --h2-size: var(--font-size-48);
+    --h3-size: var(--font-size-40);
+    --small-heads: var(--font-size-28);
+  }
+}
