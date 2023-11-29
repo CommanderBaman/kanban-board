@@ -1,4 +1,4 @@
-import { Status, WebData } from './types';
+import { WebData } from './types';
 
 export const DEMO_MODE = true;
 
@@ -116,10 +116,10 @@ export const LOCALSTORAGE_KEY_GROUPING = 'grouping-option';
 export const LOCALSTORAGE_KEY_SORTING = 'sorting-option';
 
 export const TAG_COLORS = Object.freeze([
-  '#EC8F5E',
-  '#F3B664',
-  '#F1EB90',
-  '#9FBB73',
+  '#8B1874',
+  '#B71375',
+  '#FC4F00',
+  '#F79540',
 ]);
 export const AVAILABLE_USER_COLOR = '#F1EB90'
 export const UNAVAILABLE_USER_COLOR = '#6A6F75'
@@ -156,9 +156,9 @@ export const ICON_ID_TO_COLOR: any = Object.freeze({
   'fa-solid fa-plus': 'black',
   'fa-solid fa-signal': 'black',
   'fa-solid fa-circle-check': 'purple',
-  'fa-solid fa-circle-half-stroke': '#ece351',
+  'fa-solid fa-circle-half-stroke': '#F1EB90',
   'fa-regular fa-circle': 'black',
   'fa-solid fa-circle-xmark': '#c93030',
-  'fa-solid fa-circle-exclamation': 'orange',
+  'fa-solid fa-circle-exclamation': '#FC4F00',
   'fa-solid fa-ellipsis': 'black',
 });
