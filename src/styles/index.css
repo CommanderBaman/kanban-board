@@ -10,18 +10,22 @@
 /* color variables */
 :root {
   /* source: https://material.io/design/color/dark-theme.html#ui-application */
+  --clr-surface: #ffffff;
+  --clr-bg: #f3f5f8;
+
+  --clr-on-bg: #2b2e33;
+  --clr-on-surface: #2b2e33;
+  --clr-on-surface-secondary: #6a6f75;
+
+  /* below are unedited */
   --clr-primary: #bb86fc; /* #6200ee; */
   --clr-primary-variant: #3700be;
   --clr-secondary: #03dac6;
   --clr-secondary-variant: #03dac6;
-  --clr-bg: #121212;
-  --clr-surface: #2b2b2b;
   --clr-error: #cf6679;
 
   --clr-on-primary: #000000;
   --clr-on-secondary: #000000;
-  --clr-on-bg: #ffffff;
-  --clr-on-surface: #ffffff;
   --clr-on-error: #000000;
   /* main colors */
 
@@ -40,11 +44,11 @@
   --youtube-red: #f00;
 
   /* fonts */
-  --head-font: 'Poppins', -apple-system, blinkmacsystemfont, segoe ui, arial,
+  --head-font: 'Verdana', -apple-system, blinkmacsystemfont, segoe ui, arial,
     noto sans, sans-serif; /* Gill Sans */
-  --para-font-primary: 'Open Sans', -apple-system, blinkmacsystemfont, segoe ui,
+  --para-font-primary: 'Verdana', -apple-system, blinkmacsystemfont, segoe ui,
     arial, noto sans, sans-serif; /* Abel */
-  --para-font-secondary: 'Nunito Sans', -apple-system, blinkmacsystemfont,
+  --para-font-secondary: 'Verdana', -apple-system, blinkmacsystemfont,
     segoe ui, arial, noto sans, sans-serif; /* Helvetica */
 
   /*

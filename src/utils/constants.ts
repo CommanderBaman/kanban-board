@@ -1,3 +1,5 @@
+export const DEMO_MODE = true
+
 export const DEMO_API_DATA = {
   tickets: [
     {

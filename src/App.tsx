@@ -1,13 +1,13 @@
 import './styles/reset.css'
 import './styles/index.css'
 
-import KanbanBoard from './pages/KanbanBoard';
+import HomePage from './pages/HomePage';
 import React from 'react';
 
 function App() {
   return (
     <div className="App">
-      <KanbanBoard />
+      <HomePage />
     </div>
   );
 }
