@@ -1,6 +1,8 @@
-export const DEMO_MODE = true
+import { WebData } from './types';
 
-export const DEMO_API_DATA = {
+export const DEMO_MODE = true;
+
+export const DEMO_API_DATA: WebData = Object.freeze({
   tickets: [
     {
       id: 'CAM-1',
@@ -91,4 +93,21 @@ export const DEMO_API_DATA = {
     { id: 'usr-4', name: 'Ramesh', available: true },
     { id: 'usr-5', name: 'Suresh', available: true },
   ],
-};
+});
+
+export const PRIORITY_NUM_TO_WORD = Object.freeze([
+  'No Priority',
+  'Low',
+  'Medium',
+  'High',
+  'Urgent',
+]);
+
+export const PRIORITY_OPTIONS = PRIORITY_NUM_TO_WORD;
+export const STATUS_OPTIONS = Object.freeze([
+  'Todo',
+  'In progress',
+  'Backlog',
+  'Done',
+  'Canceled',
+]);
