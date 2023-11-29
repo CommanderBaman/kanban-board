@@ -1,9 +1,28 @@
+.board {
+  display: flex;
+  justify-content: space-between;
+
+  width: var(--kanban-board-width);
+  margin: auto;
+  margin-top: 2em;
+}
+
+.cardColumnContainer {
+  flex: 1;
+}
+
 
 .header {
   background-color: var(--clr-surface);
   color: var(--clr-on-surface);
 
-  padding: 1em;
+}
+
+.headerContainer {
+  width: var(--kanban-board-width);
+  margin: auto;
+
+  padding: 1em 0;
 }
 
 .headerForm {
@@ -42,5 +61,7 @@
 
 
 .kanbanBoard {
+
+  --kanban-board-width: 90%;
   min-height: 100vh;
 }

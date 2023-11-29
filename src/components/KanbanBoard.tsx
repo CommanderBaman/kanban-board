@@ -116,35 +116,43 @@ function KanbanBoard(props: KanbanBoardProps) {
   return (
     <div className={styles.kanbanBoard}>
       <div className={styles.header}>
-        <div className={styles.headerForm}>
-          <div className={styles.headerFormPicker}>
-            <label className={styles.headerFormLabel} htmlFor='grouping-option'>
-              Grouping
-            </label>
-            <select
-              className={styles.headerFormSelect}
-              value={groupingOption}
-              onChange={onGroupingOptionSelect}
-              id='grouping-option'
-            >
-              <option value='Status'> Status</option>
-              <option value='Users'> Users</option>
-              <option value='Priority'>Priority</option>
-            </select>
-          </div>
-          <div className={styles.headerFormPicker}>
-            <label className={styles.headerFormLabel} htmlFor='sorting-option'>
-              Ordering
-            </label>
-            <select
-              className={styles.headerFormSelect}
-              value={sortingOption}
-              onChange={onSortingOptionSelect}
-              id='sorting-option'
-            >
-              <option value='Title'> Title</option>
-              <option value='Priority'>Priority</option>
-            </select>
+        <div className={styles.headerContainer}>
+          <div className={styles.headerForm}>
+            <div className={styles.headerFormPicker}>
+              <label
+                className={styles.headerFormLabel}
+                htmlFor='grouping-option'
+              >
+                Grouping
+              </label>
+              <select
+                className={styles.headerFormSelect}
+                value={groupingOption}
+                onChange={onGroupingOptionSelect}
+                id='grouping-option'
+              >
+                <option value='Status'> Status</option>
+                <option value='Users'> Users</option>
+                <option value='Priority'>Priority</option>
+              </select>
+            </div>
+            <div className={styles.headerFormPicker}>
+              <label
+                className={styles.headerFormLabel}
+                htmlFor='sorting-option'
+              >
+                Ordering
+              </label>
+              <select
+                className={styles.headerFormSelect}
+                value={sortingOption}
+                onChange={onSortingOptionSelect}
+                id='sorting-option'
+              >
+                <option value='Title'> Title</option>
+                <option value='Priority'>Priority</option>
+              </select>
+            </div>
           </div>
         </div>
       </div>
