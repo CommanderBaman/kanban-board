@@ -1,5 +1,8 @@
+import { ICON_ID_TO_COLOR, STATUS_TO_ICON_ID } from '../utils/constants';
 import { Status, User } from '../utils/types';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import styles from '../styles/components/TaskCard.module.css';
 
 export type TaskCardProps = {
@@ -9,8 +12,9 @@ export type TaskCardProps = {
   tagColors: string[];
   status: Status;
   userAvailable?: boolean;
-  userImage?: string;
+  userImage: string;
   showUser?: boolean;
+  dontShowStatus?: boolean;
 };
 
 function TaskCard(props: TaskCardProps) {
@@ -19,7 +23,15 @@ function TaskCard(props: TaskCardProps) {
       <div className={styles.leftContainer}>
         <p>{props.id}</p>
         <div className={styles.cardBody}>
-          <>{props.status}</>
+          {!props?.dontShowStatus && (
+            <FontAwesomeIcon
+              icon={STATUS_TO_ICON_ID[props.status] as IconProp}
+              style={{
+                color:
+                  ICON_ID_TO_COLOR[STATUS_TO_ICON_ID[props.status]] ?? 'black',
+              }}
+            />
+          )}
           <p>{props.title}</p>
         </div>
         <div className={styles.tagsContainer}>
@@ -30,7 +42,9 @@ function TaskCard(props: TaskCardProps) {
           ))}
         </div>
       </div>
-      <div className={styles.rightContainer}></div>
+      <div className={styles.rightContainer}>
+        {!!props?.showUser && <img src={props.userImage} alt='User' />}
+      </div>
     </div>
   );
 }

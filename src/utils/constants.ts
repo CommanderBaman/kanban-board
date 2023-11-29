@@ -112,9 +112,52 @@ export const STATUS_OPTIONS = Object.freeze([
   'Canceled',
 ]);
 
+export const LOCALSTORAGE_KEY_GROUPING = 'grouping-option';
+export const LOCALSTORAGE_KEY_SORTING = 'sorting-option';
 
-export const LOCALSTORAGE_KEY_GROUPING = 'grouping-option'
-export const LOCALSTORAGE_KEY_SORTING = 'sorting-option'
+export const TAG_COLORS = Object.freeze([
+  '#ffdbc3',
+  '#e3a0a0',
+  '#869f5b',
+  '#487490',
+  '#662267',
+]);
 
+export const ICON_IDS = Object.freeze({
+  SLIDER: 'fa-solid fa-sliders',
+  PLUS: 'fa-solid fa-plus',
+  HIGH_SIGNAL: 'fa-solid fa-signal',
+  CHECK: 'fa-solid fa-circle-check',
+  HALF_CIRCLE: 'fa-solid fa-circle-half-stroke',
+  EMPTY_CIRCLE: 'fa-regular fa-circle',
+  CROSS: 'fa-solid fa-circle-xmark',
+  DANGER: 'fa-solid fa-circle-exclamation',
+  ELLIPSIS: 'fa-solid fa-ellipsis',
+});
 
-export const TAG_COLORS = ['#ffdbc3', '#e3a0a0', '#869f5b', '#487490', '#662267']
+export const STATUS_TO_ICON_ID = Object.freeze({
+  Todo: ICON_IDS.EMPTY_CIRCLE,
+  'In progress': ICON_IDS.HALF_CIRCLE,
+  Backlog: ICON_IDS.DANGER,
+  Done: ICON_IDS.CHECK,
+  Canceled: ICON_IDS.CROSS,
+});
+export const PRIORITY_NUM_TO_ICON_ID = Object.freeze([
+  ICON_IDS.ELLIPSIS,
+  ICON_IDS.HIGH_SIGNAL,
+  ICON_IDS.HIGH_SIGNAL,
+  ICON_IDS.HIGH_SIGNAL,
+  ICON_IDS.DANGER,
+]);
+
+export const ICON_ID_TO_COLOR: any = Object.freeze({
+  'fa-solid fa-sliders': 'black',
+  'fa-solid fa-plus': 'black',
+  'fa-solid fa-signal': 'black',
+  'fa-solid fa-circle-check': 'purple',
+  'fa-solid fa-circle-half-stroke': '#ece351',
+  'fa-regular fa-circle': 'black',
+  'fa-solid fa-circle-xmark': '#c93030',
+  'fa-solid fa-circle-exclamation': 'orange',
+  'fa-solid fa-ellipsis': 'black',
+});

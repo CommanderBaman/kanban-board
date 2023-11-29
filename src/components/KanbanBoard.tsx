@@ -33,6 +33,9 @@ function KanbanBoard(props: KanbanBoardProps) {
       DEFAULT_SORTING_OPTION) as SortingOption
   );
 
+  // color dictionary
+  const [tagColorDictionary, updateTagColorDictionary] = useState({})
+
   const onGroupingOptionSelect = (e: any) => {
     localStorage.setItem(LOCALSTORAGE_KEY_GROUPING, e.target.value);
     setGroupingOption(e.target.value);
@@ -59,18 +62,19 @@ function KanbanBoard(props: KanbanBoardProps) {
     users: User[],
     groupingOption: GroupingOption,
     sortingOption: SortingOption
-  ): CardColumnProps[] => {
-    let result: CardColumnProps[];
+  ): any[] => {
+    let result: any[];
     // get all tags and assign colors
     let tags: string[] = [];
     tickets.forEach((ticket) => {
       ticket.tag.forEach((t) => tags.push(t.toLowerCase()));
     });
     tags = tags.filter((item, i, ar) => ar.indexOf(item) === i);
-    const tagColorDictionary = {} as any;
+    const tagColorDictionaryTemp = {} as any;
     tags.forEach((tag, index) => {
-      tagColorDictionary[tag] = TAG_COLORS[index % tags.length];
+      tagColorDictionaryTemp[tag] = TAG_COLORS[index % tags.length];
     });
+    updateTagColorDictionary(tagColorDictionaryTemp)
 
     // decide on sorting function
     const sortingFunction = makeSortFunction(sortingOption);
@@ -86,7 +90,6 @@ function KanbanBoard(props: KanbanBoardProps) {
                 (card) => PRIORITY_NUM_TO_WORD[card.priority] === priority
               )
               .sort(sortingFunction),
-            tagColorDictionary,
           };
         });
         break;
@@ -97,7 +100,6 @@ function KanbanBoard(props: KanbanBoardProps) {
             cards: tickets
               .filter((card) => card.status === status)
               .sort(sortingFunction),
-            tagColorDictionary,
           };
         });
         break;
@@ -108,8 +110,6 @@ function KanbanBoard(props: KanbanBoardProps) {
             cards: tickets
               .filter((card) => card.userId === user.id)
               .sort(sortingFunction),
-            isUserBased: true,
-            tagColorDictionary,
           };
         });
         break;
@@ -180,8 +180,8 @@ function KanbanBoard(props: KanbanBoardProps) {
             <CardColumn
               columnTitle={cardColumn.columnTitle}
               cards={cardColumn.cards}
-              isUserBased={cardColumn?.isUserBased}
-              tagColorDictionary={cardColumn.tagColorDictionary}
+              tagColorDictionary={tagColorDictionary}
+              groupingOption={groupingOption}
             />
           </div>
         ))}
