@@ -1,6 +1,6 @@
 import { WebData } from './types';
 
-export const DEMO_MODE = true;
+export const DEMO_MODE = false;
 
 export const DEMO_API_DATA: WebData = Object.freeze({
   tickets: [
