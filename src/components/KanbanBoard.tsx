@@ -42,10 +42,12 @@ function KanbanBoard(props: KanbanBoardProps) {
   const onGroupingOptionSelect = (e: any) => {
     localStorage.setItem(LOCALSTORAGE_KEY_GROUPING, e.target.value);
     setGroupingOption(e.target.value);
+    setShowOptions(false)
   };
   const onSortingOptionSelect = (e: any) => {
     localStorage.setItem(LOCALSTORAGE_KEY_SORTING, e.target.value);
     setSortingOption(e.target.value);
+    setShowOptions(false)
   };
 
   // for displaying select options
