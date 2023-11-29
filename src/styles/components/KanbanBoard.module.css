@@ -1,0 +1,46 @@
+
+.header {
+  background-color: var(--clr-surface);
+  color: var(--clr-on-surface);
+
+  padding: 1em;
+}
+
+.headerForm {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  row-gap: 0.5em;
+  
+  min-width: 12vw;
+
+  padding: 1em;
+
+  background-color: var(--clr-surface);
+  border: var(--border-size-0) solid var(--clr-border);
+  border-radius: var(--border-radius-8);
+}
+
+.headerFormPicker {
+  width: 100%;
+  display: grid;
+  font-size: var(--font-size-12);
+  grid-template-columns: 65% 35%;
+}
+
+.headerFormLabel {
+  font-size: 1.25em;
+  align-self: center;
+}
+
+.headerFormSelect {
+  font-size: var(--font-size-12);
+  background-color: var(--clr-surface);
+  border: var(--border-size-0) solid var(--clr-border);
+  border-radius: 0.2rem;
+}
+
+
+.kanbanBoard {
+  min-height: 100vh;
+}

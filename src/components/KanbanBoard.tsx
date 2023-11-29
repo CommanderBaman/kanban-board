@@ -24,18 +24,20 @@ function KanbanBoard(props: KanbanBoardProps) {
 
   // inputs
   const [groupingOption, setGroupingOption] = useState(
-    (localStorage.getItem(LOCALSTORAGE_KEY_GROUPING) ?? DEFAULT_GROUPING_OPTION) as GroupingOption
+    (localStorage.getItem(LOCALSTORAGE_KEY_GROUPING) ??
+      DEFAULT_GROUPING_OPTION) as GroupingOption
   );
   const [sortingOption, setSortingOption] = useState(
-    (localStorage.getItem(LOCALSTORAGE_KEY_SORTING) ?? DEFAULT_SORTING_OPTION) as SortingOption
+    (localStorage.getItem(LOCALSTORAGE_KEY_SORTING) ??
+      DEFAULT_SORTING_OPTION) as SortingOption
   );
 
   const onGroupingOptionSelect = (e: any) => {
-    localStorage.setItem(LOCALSTORAGE_KEY_GROUPING, e.target.value)
+    localStorage.setItem(LOCALSTORAGE_KEY_GROUPING, e.target.value);
     setGroupingOption(e.target.value);
   };
   const onSortingOptionSelect = (e: any) => {
-    localStorage.setItem(LOCALSTORAGE_KEY_SORTING, e.target.value)
+    localStorage.setItem(LOCALSTORAGE_KEY_SORTING, e.target.value);
     setSortingOption(e.target.value);
   };
 
@@ -43,7 +45,7 @@ function KanbanBoard(props: KanbanBoardProps) {
     switch (sortingOption) {
       case 'Priority':
         return (card1: Ticket, card2: Ticket) =>
-        // higher priority comes first => descending order
+          // higher priority comes first => descending order
           card2.priority - card1.priority;
       default:
       case 'Title':
@@ -115,21 +117,35 @@ function KanbanBoard(props: KanbanBoardProps) {
     <div className={styles.kanbanBoard}>
       <div className={styles.header}>
         <div className={styles.headerForm}>
-          <label>
-            Grouping
-            <select value={groupingOption} onChange={onGroupingOptionSelect}>
+          <div className={styles.headerFormPicker}>
+            <label className={styles.headerFormLabel} htmlFor='grouping-option'>
+              Grouping
+            </label>
+            <select
+              className={styles.headerFormSelect}
+              value={groupingOption}
+              onChange={onGroupingOptionSelect}
+              id='grouping-option'
+            >
               <option value='Status'> Status</option>
               <option value='Users'> Users</option>
               <option value='Priority'>Priority</option>
             </select>
-          </label>
-          <label>
-            Ordering
-            <select value={sortingOption} onChange={onSortingOptionSelect}>
+          </div>
+          <div className={styles.headerFormPicker}>
+            <label className={styles.headerFormLabel} htmlFor='sorting-option'>
+              Ordering
+            </label>
+            <select
+              className={styles.headerFormSelect}
+              value={sortingOption}
+              onChange={onSortingOptionSelect}
+              id='sorting-option'
+            >
               <option value='Title'> Title</option>
               <option value='Priority'>Priority</option>
             </select>
-          </label>
+          </div>
         </div>
       </div>
       <div className={styles.board}>

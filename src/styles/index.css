@@ -16,6 +16,7 @@
   --clr-on-bg: #2b2e33;
   --clr-on-surface: #2b2e33;
   --clr-on-surface-secondary: #6a6f75;
+  --clr-border: #d5d5d6;
 
   /* below are unedited */
   --clr-primary: #bb86fc; /* #6200ee; */
@@ -146,30 +147,4 @@ h3 {
 
 img {
   border-radius: var(--border-radius-8);
-}
-
-@media only screen and (min-width: 48em) {
-  :root {
-    /* common font sizes */
-    --font-size-12: max(12px, calc(18 * var(--px-to-vw)));
-    --font-size-16: max(16px, calc(24 * var(--px-to-vw)));
-    --font-size-20: max(20px, calc(29 * var(--px-to-vw)));
-    --font-size-24: max(24px, calc(32 * var(--px-to-vw)));
-    --font-size-28: max(28px, calc(40 * var(--px-to-vw)));
-    --font-size-32: max(32px, calc(48 * var(--px-to-vw)));
-    --font-size-36: max(36px, calc(54 * var(--px-to-vw)));
-    --font-size-40: max(40px, calc(60 * var(--px-to-vw)));
-    --font-size-44: max(44px, calc(68 * var(--px-to-vw)));
-    --font-size-48: max(48px, calc(75 * var(--px-to-vw)));
-    --font-size-64: max(64px, calc(98 * var(--px-to-vw)));
-    --font-size-80: max(80px, calc(120 * var(--px-to-vw)));
-    --font-size-96: max(96px, calc(144 * var(--px-to-vw)));
-
-    /* heading and icon sizes */
-    --icon-size: var(--font-size-32);
-    --h1-size: var(--font-size-80);
-    --h2-size: var(--font-size-48);
-    --h3-size: var(--font-size-40);
-    --small-heads: var(--font-size-28);
-  }
 }
