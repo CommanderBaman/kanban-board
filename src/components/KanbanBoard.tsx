@@ -1,6 +1,7 @@
 import CardColumn, { CardColumnProps } from './CardColumn';
 import { GroupingOption, SortingOption, Ticket, User } from '../utils/types';
 import {
+  ICON_IDS,
   LOCALSTORAGE_KEY_GROUPING,
   LOCALSTORAGE_KEY_SORTING,
   PRIORITY_NUM_TO_WORD,
@@ -8,8 +9,10 @@ import {
   STATUS_OPTIONS,
   TAG_COLORS,
 } from '../utils/constants';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import styles from '../styles/components/KanbanBoard.module.css';
 
 const DEFAULT_GROUPING_OPTION = 'Status';
@@ -34,7 +37,7 @@ function KanbanBoard(props: KanbanBoardProps) {
   );
 
   // color dictionary
-  const [tagColorDictionary, updateTagColorDictionary] = useState({})
+  const [tagColorDictionary, updateTagColorDictionary] = useState({});
 
   const onGroupingOptionSelect = (e: any) => {
     localStorage.setItem(LOCALSTORAGE_KEY_GROUPING, e.target.value);
@@ -45,14 +48,25 @@ function KanbanBoard(props: KanbanBoardProps) {
     setSortingOption(e.target.value);
   };
 
+  // for displaying select options
+  const [showOptions, setShowOptions] = useState(false);
+
+  const onShowButtonClick = () => {
+    setShowOptions(true);
+  };
+  const onOutsideFormClick = () => {
+    setShowOptions(false);
+  };
+
+  // grouping and sorting functions
   const makeSortFunction = (sortingOption: SortingOption) => {
     switch (sortingOption) {
       case 'Priority':
         return (card1: Ticket, card2: Ticket) =>
           // higher priority comes first => descending order
           card2.priority - card1.priority;
-      default:
       case 'Title':
+      default:
         return (card1: Ticket, card2: Ticket) =>
           card1.title > card2.title ? 1 : -1;
     }
@@ -74,7 +88,7 @@ function KanbanBoard(props: KanbanBoardProps) {
     tags.forEach((tag, index) => {
       tagColorDictionaryTemp[tag] = TAG_COLORS[index % tags.length];
     });
-    updateTagColorDictionary(tagColorDictionaryTemp)
+    updateTagColorDictionary(tagColorDictionaryTemp);
 
     // decide on sorting function
     const sortingFunction = makeSortFunction(sortingOption);
@@ -135,43 +149,55 @@ function KanbanBoard(props: KanbanBoardProps) {
     <div className={styles.kanbanBoard}>
       <div className={styles.header}>
         <div className={styles.headerContainer}>
-          <div className={styles.headerForm}>
-            <div className={styles.headerFormPicker}>
-              <label
-                className={styles.headerFormLabel}
-                htmlFor='grouping-option'
-              >
-                Grouping
-              </label>
-              <select
-                className={styles.headerFormSelect}
-                value={groupingOption}
-                onChange={onGroupingOptionSelect}
-                id='grouping-option'
-              >
-                <option value='Status'> Status</option>
-                <option value='Users'> Users</option>
-                <option value='Priority'>Priority</option>
-              </select>
-            </div>
-            <div className={styles.headerFormPicker}>
-              <label
-                className={styles.headerFormLabel}
-                htmlFor='sorting-option'
-              >
-                Ordering
-              </label>
-              <select
-                className={styles.headerFormSelect}
-                value={sortingOption}
-                onChange={onSortingOptionSelect}
-                id='sorting-option'
-              >
-                <option value='Title'> Title</option>
-                <option value='Priority'>Priority</option>
-              </select>
-            </div>
+          <div
+            className={styles.headerOptionsShowButton}
+            onClick={onShowButtonClick}
+          >
+            <FontAwesomeIcon
+              className={styles.showButtonIcon}
+              icon={ICON_IDS.SLIDER as IconProp}
+            />
+            <p className={styles.showButtonText}>Options</p>
           </div>
+          {showOptions && (
+            <div className={styles.headerForm}>
+              <div className={styles.headerFormPicker}>
+                <label
+                  className={styles.headerFormLabel}
+                  htmlFor='grouping-option'
+                >
+                  Grouping
+                </label>
+                <select
+                  className={styles.headerFormSelect}
+                  value={groupingOption}
+                  onChange={onGroupingOptionSelect}
+                  id='grouping-option'
+                >
+                  <option value='Status'> Status</option>
+                  <option value='Users'> Users</option>
+                  <option value='Priority'>Priority</option>
+                </select>
+              </div>
+              <div className={styles.headerFormPicker}>
+                <label
+                  className={styles.headerFormLabel}
+                  htmlFor='sorting-option'
+                >
+                  Ordering
+                </label>
+                <select
+                  className={styles.headerFormSelect}
+                  value={sortingOption}
+                  onChange={onSortingOptionSelect}
+                  id='sorting-option'
+                >
+                  <option value='Title'> Title</option>
+                  <option value='Priority'>Priority</option>
+                </select>
+              </div>
+            </div>
+          )}
         </div>
       </div>
       <div className={styles.board}>
@@ -187,6 +213,9 @@ function KanbanBoard(props: KanbanBoardProps) {
           </div>
         ))}
       </div>
+      {showOptions && (
+        <div className={styles.fullScreen} onClick={onOutsideFormClick}></div>
+      )}
     </div>
   );
 }

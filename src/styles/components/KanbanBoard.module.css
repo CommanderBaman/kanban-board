@@ -23,6 +23,7 @@
   margin: auto;
 
   padding: 1em 0;
+  position: relative;
 }
 
 .headerForm {
@@ -38,6 +39,10 @@
   background-color: var(--clr-surface);
   border: var(--border-size-0) solid var(--clr-border);
   border-radius: var(--border-radius-8);
+
+  position: absolute;
+  bottom: -105%;
+  z-index: 3;
 }
 
 .headerFormPicker {
@@ -57,11 +62,49 @@
   background-color: var(--clr-surface);
   border: var(--border-size-0) solid var(--clr-border);
   border-radius: 0.2rem;
+
+  font-family: var(--para-font-primary);
+  cursor: pointer;
+}
+
+.headerOptionsShowButton {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+
+  padding: 0.5em 1em;
+
+  border-radius: var(--border-radius-8);
+  border: var(--border-size-0) solid var(--clr-border);
+  box-shadow: 0 0 5px var(--clr-border);
+
+  cursor: pointer;
+}
+
+.showButtonIcon {
+font-size: 1em;
+aspect-ratio: 1/1;
+color: var(--clr-on-surface-secondary);
+}
+
+.showButtonText {
+  padding-left: 0.5em;
+}
+
+.kanbanBoard {
+  --kanban-board-width: 90%;
+  min-height: 100vh;
+
+  z-index: 1;
+  position: relative;
 }
 
 
-.kanbanBoard {
-
-  --kanban-board-width: 90%;
-  min-height: 100vh;
+.fullScreen {
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
 }
