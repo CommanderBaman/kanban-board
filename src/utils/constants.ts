@@ -111,3 +111,7 @@ export const STATUS_OPTIONS = Object.freeze([
   'Done',
   'Canceled',
 ]);
+
+
+export const LOCALSTORAGE_KEY_GROUPING = 'grouping-option'
+export const LOCALSTORAGE_KEY_SORTING = 'sorting-option'

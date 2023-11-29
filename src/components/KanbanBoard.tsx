@@ -1,6 +1,8 @@
 import CardColumn, { CardColumnProps } from './CardColumn';
 import { GroupingOption, SortingOption, Ticket, User } from '../utils/types';
 import {
+  LOCALSTORAGE_KEY_GROUPING,
+  LOCALSTORAGE_KEY_SORTING,
   PRIORITY_NUM_TO_WORD,
   PRIORITY_OPTIONS,
   STATUS_OPTIONS,
@@ -20,17 +22,20 @@ function KanbanBoard(props: KanbanBoardProps) {
   // column data
   const [columns, setColumns] = useState([] as CardColumnProps[]);
 
+  // inputs
   const [groupingOption, setGroupingOption] = useState(
-    DEFAULT_GROUPING_OPTION as GroupingOption
+    (localStorage.getItem(LOCALSTORAGE_KEY_GROUPING) ?? DEFAULT_GROUPING_OPTION) as GroupingOption
   );
   const [sortingOption, setSortingOption] = useState(
-    DEFAULT_SORTING_OPTION as SortingOption
+    (localStorage.getItem(LOCALSTORAGE_KEY_SORTING) ?? DEFAULT_SORTING_OPTION) as SortingOption
   );
 
   const onGroupingOptionSelect = (e: any) => {
+    localStorage.setItem(LOCALSTORAGE_KEY_GROUPING, e.target.value)
     setGroupingOption(e.target.value);
   };
   const onSortingOptionSelect = (e: any) => {
+    localStorage.setItem(LOCALSTORAGE_KEY_SORTING, e.target.value)
     setSortingOption(e.target.value);
   };
 
