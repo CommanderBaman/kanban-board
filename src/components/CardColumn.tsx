@@ -1,7 +1,8 @@
-import { GroupingOption, Ticket } from '../utils/types';
+import { GroupingOption, Ticket, User } from '../utils/types';
 import {
   ICON_ID_TO_COLOR,
   PRIORITY_NUM_TO_ICON_ID,
+  PRIORITY_OPTIONS,
   STATUS_TO_ICON_ID,
 } from '../utils/constants';
 
@@ -15,6 +16,7 @@ import styles from '../styles/components/CardColumn.module.css';
 export type CardColumnProps = {
   columnTitle: string;
   cards: Ticket[];
+  users: User[];
   groupingOption: GroupingOption;
   tagColorDictionary: any;
 };
@@ -29,24 +31,32 @@ function CardColumn(props: CardColumnProps) {
         {isUserBased && <img src={DummyAccountImage} alt='User' />}
         {isStatusBased && (
           <FontAwesomeIcon
-            icon={STATUS_TO_ICON_ID[props.cards[0]?.status ?? 0] as IconProp}
+            // eslint-disable-next-line
+            icon={STATUS_TO_ICON_ID[props.columnTitle] as IconProp}
             style={{
               color:
-                ICON_ID_TO_COLOR[
-                  STATUS_TO_ICON_ID[props.cards[0]?.status ?? 0]
-                ] ?? 'black',
+                ICON_ID_TO_COLOR[STATUS_TO_ICON_ID[props.columnTitle]] ??
+                'black',
             }}
           />
         )}
         {isPriorityBased && (
           <FontAwesomeIcon
             icon={
-              PRIORITY_NUM_TO_ICON_ID[props.cards[0]?.priority ?? 0] as IconProp
+              PRIORITY_NUM_TO_ICON_ID[
+                PRIORITY_OPTIONS.findIndex(
+                  (option) => option === props.columnTitle
+                )
+              ] as IconProp
             }
             style={{
               color:
                 ICON_ID_TO_COLOR[
-                  PRIORITY_NUM_TO_ICON_ID[props.cards[0]?.priority ?? 0]
+                  PRIORITY_NUM_TO_ICON_ID[
+                    PRIORITY_OPTIONS.findIndex(
+                      (option) => option === props.columnTitle
+                    )
+                  ]
                 ] ?? 'black',
             }}
           />
@@ -67,6 +77,11 @@ function CardColumn(props: CardColumnProps) {
               userImage={DummyAccountImage}
               showUser={!isUserBased}
               dontShowStatus={isStatusBased}
+              userAvailable={
+                props.users[
+                  props.users.findIndex((user) => user.id === card.userId)
+                ].available
+              }
             />
           </div>
         ))}

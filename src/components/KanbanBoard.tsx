@@ -182,6 +182,7 @@ function KanbanBoard(props: KanbanBoardProps) {
               cards={cardColumn.cards}
               tagColorDictionary={tagColorDictionary}
               groupingOption={groupingOption}
+              users={props.data.users}
             />
           </div>
         ))}

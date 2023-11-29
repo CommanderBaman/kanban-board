@@ -1,4 +1,4 @@
-import { WebData } from './types';
+import { Status, WebData } from './types';
 
 export const DEMO_MODE = true;
 
@@ -32,7 +32,7 @@ export const DEMO_API_DATA: WebData = Object.freeze({
     {
       id: 'CAM-4',
       title: 'Implement Email Notification System',
-      tag: ['Feature Request'],
+      tag: ['Feature Request', 'Modding', 'Completion', 'A lot of tags'],
       userId: 'usr-1',
       status: 'In progress',
       priority: 3,
@@ -135,14 +135,14 @@ export const ICON_IDS = Object.freeze({
   ELLIPSIS: 'fa-solid fa-ellipsis',
 });
 
-export const STATUS_TO_ICON_ID = Object.freeze({
+export const STATUS_TO_ICON_ID: {[key: string]: any}  = Object.freeze({
   Todo: ICON_IDS.EMPTY_CIRCLE,
   'In progress': ICON_IDS.HALF_CIRCLE,
   Backlog: ICON_IDS.DANGER,
   Done: ICON_IDS.CHECK,
   Canceled: ICON_IDS.CROSS,
 });
-export const PRIORITY_NUM_TO_ICON_ID = Object.freeze([
+export const PRIORITY_NUM_TO_ICON_ID: {[key: string]: any} = Object.freeze([
   ICON_IDS.ELLIPSIS,
   ICON_IDS.HIGH_SIGNAL,
   ICON_IDS.HIGH_SIGNAL,
