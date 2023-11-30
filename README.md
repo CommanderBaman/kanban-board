@@ -1,6 +1,6 @@
 # Frontend Assignment Submission
 
-This is Frontend Assignment Submission for Quicksell. This project is made with React and Typescript.
+This is Frontend Assignment Submission for Quicksell. This project is made with React and Typescript. It has been deployed [here](https://commanderbaman.github.io/kanban-board/).
 
 Features Included: 
 1. Grouping of tickets in three options - Users, Priority and Status (default)
